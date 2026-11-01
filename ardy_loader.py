@@ -8,7 +8,7 @@ from peft import PeftModel
 from transformers import AutoTokenizer
 
 from .ardy_import import setup_ardy_path
-from .folder_paths import get_ardy_directory
+from .folder_paths import get_text_encoder_directory
 from .model_downloads import ensure_text_encoder
 
 setup_ardy_path()
@@ -23,7 +23,7 @@ from .quantized_encoder import QuantizedTextEncoder
 class LocalTextEncoder:
     def __init__(self, device="cuda:0"):
         self.device = device
-        root = get_ardy_directory() / "text_encoder"
+        root = get_text_encoder_directory()
         base = root / "Meta-Llama-3-8B-Instruct"
         mntp = root / "LLM2Vec-Meta-Llama-3-8B-Instruct-mntp"
         supervised = root / "LLM2Vec-Meta-Llama-3-8B-Instruct-mntp-supervised"
@@ -84,7 +84,7 @@ def load_text_encoder(text_encoder="auto", device="cuda:0"):
         raise ValueError(f"Unknown ARDY text encoder device: {device}")
     if text_encoder not in ("auto", "int8_convrot", "bf16"):
         raise ValueError(f"Unknown ARDY text encoder: {text_encoder}")
-    root = get_ardy_directory() / "text_encoder"
+    root = get_text_encoder_directory()
     quantized = root / "Meta-Llama-3-8B-Instruct_Int8_Convrot" / "meta_llama_3_8B_Instruct_comfy_int8_convrot.safetensors"
     use_quantized = text_encoder in ("auto", "int8_convrot")
     ensure_text_encoder(root, use_quantized)

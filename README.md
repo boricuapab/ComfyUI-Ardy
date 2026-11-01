@@ -103,7 +103,7 @@ The optional local `vendor/` directory is excluded from this repository.
 Place the complete motion checkpoint, including its `stats` directory, in
 `ComfyUI/models/ardy/ARDY-Core-RP-20FPS-Horizon40`.
 
-The text encoder uses these folders under `ComfyUI/models/ardy/text_encoder`:
+The text encoder uses these folders under `ComfyUI/models/text_encoders/ardy`:
 
 - `Meta-Llama-3-8B-Instruct`: base model safetensors, index and config.
 - `LLM2Vec-Meta-Llama-3-8B-Instruct-mntp`: MNTP adapter, config and tokenizer files.
@@ -120,7 +120,7 @@ no separate global model cache.
 ### INT8 ConvRot text encoder
 
 `Load ARDY Text Encoder` has a `text_encoder` selector. `auto` prefers
-`text_encoder/Meta-Llama-3-8B-Instruct_Int8_Convrot/meta_llama_3_8B_Instruct_comfy_int8_convrot.safetensors`
+`text_encoders/ardy/Meta-Llama-3-8B-Instruct_Int8_Convrot/meta_llama_3_8B_Instruct_comfy_int8_convrot.safetensors`
 automatically, downloading it when missing. Select `int8_convrot` to require it, or `bf16` for the original
 Hugging Face shards (those shards must still be installed).
 
@@ -154,4 +154,4 @@ license. The bundled Three.js files retain their MIT license in
 
 ### Automatic model downloads
 
-Models are stored under the configured ComfyUI models directory in ardy/. The default Core Horizon40 checkpoint includes its statistics. Text encoders are stored in ardy/text_encoder/. The auto option prefers the ungated INT8 ConvRot checkpoint from boricuapab/meta_llama_3_8B_Instruct_comfy_int8_convrot and downloads both McGill-NLP LLM2Vec adapters. Selecting bf16 downloads the official Meta-Llama-3-8B-Instruct base instead; access to that gated repository requires approval and Hugging Face authentication. Existing complete files are reused. hf-xet enables Xet transfer support where available. Downloads happen only when a loader executes, never during node discovery.
+Models are stored under the configured ComfyUI models directory in ardy/. The default Core Horizon40 checkpoint includes its statistics. Text encoders are stored in text_encoders/ardy/. The auto option prefers the ungated INT8 ConvRot checkpoint from boricuapab/meta_llama_3_8B_Instruct_comfy_int8_convrot and downloads both McGill-NLP LLM2Vec adapters. Selecting bf16 downloads the official Meta-Llama-3-8B-Instruct base instead; access to that gated repository requires approval and Hugging Face authentication. Existing complete files are reused. hf-xet enables Xet transfer support where available. Downloads happen only when a loader executes, never during node discovery.

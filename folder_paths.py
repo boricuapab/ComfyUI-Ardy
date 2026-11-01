@@ -11,6 +11,10 @@ from .model_downloads import CORE_MODEL, ensure_model
 ARDY_FOLDER = "ardy"
 
 
+def get_text_encoder_directory():
+    return Path(comfy_paths.models_dir) / 'text_encoders' / 'ardy'
+
+
 def get_ardy_directory():
 
     path = Path(
