@@ -1,5 +1,6 @@
 ardy @ git+https://github.com/nv-tlabs/ardy.git@693f74d13b3d04a0a22ce127ee79c929dd89756b
 einops
+hf-xet
 omegaconf
 transformers
 accelerate

@@ -9,6 +9,7 @@ from transformers import AutoTokenizer
 
 from .ardy_import import setup_ardy_path
 from .folder_paths import get_ardy_directory
+from .model_downloads import ensure_text_encoder
 
 setup_ardy_path()
 
@@ -85,5 +86,6 @@ def load_text_encoder(text_encoder="auto", device="cuda:0"):
         raise ValueError(f"Unknown ARDY text encoder: {text_encoder}")
     root = get_ardy_directory() / "text_encoder"
     quantized = root / "Meta-Llama-3-8B-Instruct_Int8_Convrot" / "meta_llama_3_8B_Instruct_comfy_int8_convrot.safetensors"
-    use_quantized = text_encoder == "int8_convrot" or (text_encoder == "auto" and quantized.is_file())
+    use_quantized = text_encoder in ("auto", "int8_convrot")
+    ensure_text_encoder(root, use_quantized)
     return QuantizedTextEncoder(quantized, root, device) if use_quantized else LocalTextEncoder(device)

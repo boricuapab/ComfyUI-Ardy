@@ -121,14 +121,14 @@ no separate global model cache.
 
 `Load ARDY Text Encoder` has a `text_encoder` selector. `auto` prefers
 `text_encoder/Meta-Llama-3-8B-Instruct_Int8_Convrot/meta_llama_3_8B_Instruct_comfy_int8_convrot.safetensors`
-when present. Select `int8_convrot` to require it, or `bf16` for the original
+automatically, downloading it when missing. Select `int8_convrot` to require it, or `bf16` for the original
 Hugging Face shards (those shards must still be installed).
 
 The INT8 file contains the base Llama weights only. Both local LLM2Vec adapter
 folders above remain required. ComfyUI applies their LoRA contributions during
 encoding without dequantizing and merging the entire base model. The encoder
 uses ComfyUI quantized operations, bidirectional attention, and model offloading.
-No conversion or extra download is needed.
+No conversion is needed.
 
 The recording workflow has been verified with dynamic VRAM enabled.
 
@@ -151,3 +151,7 @@ Model weights and recordings are not included.
 The wrapper is MIT licensed. ARDY is installed separately under its upstream
 license. The bundled Three.js files retain their MIT license in
 `web/vendor/LICENSE.three`.
+
+### Automatic model downloads
+
+Models are stored under the configured ComfyUI models directory in ardy/. The default Core Horizon40 checkpoint includes its statistics. Text encoders are stored in ardy/text_encoder/. The auto option prefers the ungated INT8 ConvRot checkpoint from boricuapab/meta_llama_3_8B_Instruct_comfy_int8_convrot and downloads both McGill-NLP LLM2Vec adapters. Selecting bf16 downloads the official Meta-Llama-3-8B-Instruct base instead; access to that gated repository requires approval and Hugging Face authentication. Existing complete files are reused. hf-xet enables Xet transfer support where available. Downloads happen only when a loader executes, never during node discovery.
