@@ -1,0 +1,14 @@
+[project]
+name = "ComfyUI-Ardy"
+version = "0.1.0"
+description = "ComfyUI nodes for ARDY motion generation, live steering, and camera recording"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dynamic = ["dependencies"]
+
+[project.urls]
+Repository = "https://github.com/boricuapab/ComfyUI-Ardy"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

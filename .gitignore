@@ -1,0 +1,14 @@
+/vendor/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.env.*
+outputs/
+output/
+models/
+recordings/
+*.log
+*.tmp.*
+.publish-staging/
