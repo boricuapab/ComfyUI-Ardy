@@ -101,7 +101,7 @@ C++). Its build uses CMake and may download pybind11 and Eigen.
 The optional local `vendor/` directory is excluded from this repository.
 
 Place the complete motion checkpoint, including its `stats` directory, in
-`ComfyUI/models/ardy/ARDY-Core-RP-20FPS-Horizon40`.
+`ComfyUI/models/ardy_motion/ARDY-Core-RP-20FPS-Horizon40`.
 
 The text encoder uses these folders under `ComfyUI/models/text_encoders/ardy`:
 
@@ -154,4 +154,4 @@ license. The bundled Three.js files retain their MIT license in
 
 ### Automatic model downloads
 
-Models are stored under the configured ComfyUI models directory in ardy/. The default Core Horizon40 checkpoint includes its statistics. Text encoders are stored in text_encoders/ardy/. The auto option prefers the ungated INT8 ConvRot checkpoint from boricuapab/meta_llama_3_8B_Instruct_comfy_int8_convrot and downloads both McGill-NLP LLM2Vec adapters. Selecting bf16 downloads the official Meta-Llama-3-8B-Instruct base instead; access to that gated repository requires approval and Hugging Face authentication. Existing complete files are reused. hf-xet enables Xet transfer support where available. Downloads happen only when a loader executes, never during node discovery.
+Models are stored under the configured ComfyUI models directory in ardy_motion/. The default Core Horizon40 checkpoint includes its statistics. Text encoders are stored in text_encoders/ardy/. The auto option prefers the ungated INT8 ConvRot checkpoint from boricuapab/meta_llama_3_8B_Instruct_comfy_int8_convrot and downloads both McGill-NLP LLM2Vec adapters. Selecting bf16 downloads the official Meta-Llama-3-8B-Instruct base instead; access to that gated repository requires approval and Hugging Face authentication. Existing complete files are reused. hf-xet enables Xet transfer support where available. Downloads happen only when a loader executes, never during node discovery.

@@ -8,7 +8,7 @@ import folder_paths as comfy_paths
 from .model_downloads import CORE_MODEL, ensure_model
 
 
-ARDY_FOLDER = "ardy"
+ARDY_FOLDER = "ardy_motion"
 
 
 def get_text_encoder_directory():
@@ -52,7 +52,7 @@ def get_model_path(name):
     root = get_ardy_directory().resolve()
     path = (root / name).resolve()
     if not path.is_relative_to(root) or path == root:
-        raise ValueError("ARDY model must be inside the models/ardy directory.")
+        raise ValueError("ARDY model must be inside the models/ardy_motion directory.")
     if name == CORE_MODEL:
         required = ['config.yaml', 'denoiser.safetensors', 'tokenizer.safetensors',
                     *[f'stats/{kind}/{stat}.npy' for kind in ('motion', 'post_quantization', 'pre_quantization') for stat in ('mean', 'std')]]
